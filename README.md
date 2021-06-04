@@ -1,6 +1,6 @@
 # 实时矢量切片服务器
 
-VectorTile 是一个基于 [PostGIS](http://postgis.net/) 的 [ST_AsMVT](http://postgis.net/docs/ST_AsMVT.html) 函数开发的矢量切片服务器， Http 请求基于 .Net 5 WebAPI 实现。
+VectorTile 是一个基于 [PostGIS](http://postgis.net/) 的 [ST_AsMVT](http://postgis.net/docs/ST_AsMVT.html) 函数开发的矢量切片服务器， HTTP 请求处理基于 .Net 5 WebAPI 实现。
 
 ![Vector Tile Server](assets/VectorTileServer.png)
 
