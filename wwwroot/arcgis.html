@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ArcGIS Javascript API Test</title>
+  <style>html,body,#viewDiv { padding: 0; margin: 0; height: 100%; width: 100%; overflow: hidden; }</style>
+  <script>
+  window.dojoConfig = { async: true };
+  window.esriConfig = { locale: 'zh-cn' };
+  </script>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.18/esri/themes/light/main.css" />
+  <script src="https://js.arcgis.com/4.18/init.js"></script>
+</head>
+
+<body>
+  <div id="viewDiv"></div>
+<script>
+require([
+  // 'esri/config',
+  'esri/Map',
+  'esri/views/SceneView',
+  'esri/layers/VectorTileLayer'
+], function (Map, MapView, VectorTileLayer) {
+  const map = new Map({
+    basemap: 'satellite'
+  });
+  const view = new MapView({
+    container: 'viewDiv', // Reference to the scene div created in step 5
+    map: map, // Reference to the map object created before the scene
+    zoom: 8, // Sets zoom level based on level of detail (LOD)
+    center: [113.31939, 23.12313] // Sets center point of view using longitude,latitude
+  });
+  Object.assign(window, { _mapview: view });
+  view.when(() => {
+    const road = new VectorTileLayer({
+      style: {
+        "version": 8,
+        "sources": {
+          "guangzhou": {
+            type: 'vector',
+            scheme: 'xyz',
+            tiles: [`${location.protocol}//${location.host}/api/vectortiles/test1/{z}/{y}/{x}`],
+            minzoom: 9,
+            maxzoom: 17
+          }
+        },
+        "layers": [
+          {
+            id: 'guangzhou_road',
+            source: 'guangzhou',
+            'source-layer': 'guangzhou_road',
+            type: 'line',
+            minzoom: 9,
+            maxzoom: 15,
+            paint: {
+              'line-color': '#00FF00',
+              'line-width': 2
+            }
+          }
+        ]
+      }
+    });
+    map.add(road);
+  });
+})
+</script>
+</body>
+
+</html>
