@@ -29,7 +29,7 @@ docker pull postgis/postgis:13-3.1
 
 空间数据的坐标系建议是 WGS84 Web Mercator (SRID 3857) ， 这个是 WebGIS 的标准， 也是矢量切片服务的默认坐标系， 输出时不需要进行坐标系转换， 效率最高。
 
-虽然 PostGIS 提供了 [ST_Transform](http://postgis.net/docs/ST_Transform.html) 函数可以进行坐标系转换， 但是却要消耗额外的性能。
+虽然 PostGIS 提供了 [ST_Transform](http://postgis.net/docs/ST_Transform.html) 函数可以进行坐标系转换， 但是却要消耗额外的性能 (v1.1.0 提供了缓存功能， 在缓存有效时间内， 只需要进行一次坐标系转换）。
 
 ## 配置说明
 
