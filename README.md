@@ -45,14 +45,15 @@ docker pull postgis/postgis:13-3.1
     // 可以添加多个数据库连接
     "test_db2": ""
   },
-  "cache": { // 缓存设置
+  "cache": { // 全局缓存设置
     "enabled": true, // 启用缓存
-    "directory": "./mvt_cache", // 缓存目录
-    "duration": 86400 // 缓存的秒数， 1 天 3600 * 24 = 86400 秒
+    "directory": "./app_cache", // 缓存目录
+    "duration": 86400 // 默认的缓存时间， 以秒为单位， 1 天 3600 * 24 = 86400 秒
   },
   "vectors": {
     "test1": { // 配置一个矢量切片源
       "connectionString": "test_db", // 上面配置数据库连接串， 也可以直接写数据库链接
+      "cacheDuration": 3600, // 该矢量切片源的缓存时间，如果未设置则使用全局默认的缓存时间
       "layers": [
         {
           "name": "road", // 图层名称
