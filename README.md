@@ -6,19 +6,19 @@ VectorTile 是一个基于 [PostGIS](http://postgis.net/) 的 [ST_AsMVT](http://
 
 ## 数据库需求
 
-- PostGIS 最新版， 目前是 3.1.2 ；
-- PostgreSQL 虽然 PostGIS 最低支持 9.6.x 版本的， 但是建议使用最新版 12.x 或者 13.x 以获取最佳的性能；
+- `PostGIS` 最低版本为 3.1.x ；
+- `PostgreSQL` 虽然 PostGIS 最低支持 9.6.x 版本的 PostgreSQL ， 但是建议使用最新版 14.x 以获取最佳的性能；
 
 如果有 Docker 环境， 可以直接拉取我定制的 [PostGIS](https://hub.docker.com/r/beginor/postgis) 镜像：
 
 ```sh
-docker pull beginor/postgis:13
+docker pull beginor/postgis:14-3.2.2022.0207
 ```
 
 也可以拉取 PostGIS 的官方镜像：
 
 ```sh
-docker pull postgis/postgis:13-3.1
+docker pull postgis/postgis:14-3.2
 ```
 
 当然， 也可以自行安装 PostgreSQL + PostGIS 。
